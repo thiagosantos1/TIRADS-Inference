@@ -23,6 +23,8 @@ from text_cleaning import text_cleaning
 from scipy.special import softmax
 from extract_data import preprocess_data
 from extract_tirads import extract_nodules
+import argparse
+import itertools
 
 
 class TIRADS:
@@ -167,17 +169,35 @@ class TIRADS:
               f.write(output_string)
 
         
-           
+
+def parse_args():
+  parser = argparse.ArgumentParser()
+
+  parser.add_argument('-inputfile', type=str, default='indiana.csv',
+                        help='Choose the input CSV file')
+  parser.add_argument('-column_name', type=str, default='report',
+                        help='Provide the column name for the report text')
+  parser.add_argument('-output_file', type=str, default='results.txt',
+                        help='Choose an output file name')
+  parser.add_argument('-remove_structured', type=str, default='True',
+                        help='''Choose to remove or not structured reports - If false, only nodules with 
+                                free-text form of description will be used''')
+
+  return parser.parse_args()          
 
 if __name__ == '__main__':
+    args = parse_args()
 
-    if len(sys.argv) < 4:
-        print("Please provide <inputfile>, <text_column_name>, <output_file> \n")
-        sys.exit(1)
+    # if len(sys.argv) < 4:
+    #     print("Please provide <inputfile>, <text_column_name>, <output_file> \n")
+    #     sys.exit(1)
 
-    input_file = sys.argv[1]
-    column = sys.argv[2]
-    output_file = sys.argv[3]
+
+    input_file = args.inputfile
+    column = args.column_name
+    output_file = args.output_file
+    remove_structured = args.remove_structured.lower() in ("true", "yes", "1")
+    print(remove_structured)
 
     model = TIRADS(results_out=output_file)
 
@@ -187,7 +207,7 @@ if __name__ == '__main__':
     X, y, _,_,_,_,_  = preprocess_data(data=nodule_data, steam=True, remove_noise=True, 
                                        lemma=True, id_report=False,data_column = "Nodule Text", 
                                        score_column= 'TIRADS Score',remove_reports=[],clean=False,
-                                       remove_struct_reports=False)
+                                       remove_struct_reports=remove_structured)
 
     X_sentences = []
     all_data = [word for report in X for word in report]
@@ -201,6 +221,10 @@ if __name__ == '__main__':
 
     df_test = pd.DataFrame(list(zip(X_sentences, y)), 
                             columns =['report', 'labels']) 
+
+    if df_test.shape[0] <1:
+      print("\n\t##### No data available for testing #####")
+      exit()
 
     model.test(df_test)
     
