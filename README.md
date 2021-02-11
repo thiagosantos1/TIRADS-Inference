@@ -40,5 +40,16 @@ https://drive.google.com/file/d/1qhkilrbjO_heIUMvzCdRdEUcdXjRJVpQ/view?usp=shari
 # Unzip and move all files to TIRADS-Shared/BERT/
 
 cd Downloads(Or folder where file were downloaded)
+
 unzip BERT_model.zip -d BERT_model
+
 mv BERT_model/* TIRADS-Shared/BERT/
+
+# Use model to predict TI-RADS
+cd
+
+cd TIRADS-Shared
+
+python3 main.py [usage]
+
+
