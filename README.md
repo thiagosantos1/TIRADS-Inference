@@ -6,7 +6,7 @@
     Usage:
     python3 main.py -inputfile myfile.csv -column_name report -output_file results.txt
     
-    usage: main.py 	[-inputfile INPUTFILE] - Choose the input CSV file; Default: indiana.csv
+    Usage: main.py 	[-inputfile INPUTFILE] - Choose the input CSV file; Default: indiana.csv
     				[-column_name COLUMN_NAME] - Provide the column name for the report text; Default: report
                		[-output_file OUTPUT_FILE] - Choose an output file name; Default: results.txt
                		[-remove_structured True/False] - Choose to remove or not structured reports - If false, only nodules with free-text form of description will be used; Default: True
