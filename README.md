@@ -1,4 +1,4 @@
-# TI-RADS Scoring Inference from semi-strucuted reports.
+# TI-RADS Scoring Inference From Semi-Strucuted Reports
 This repository contains the workflow of our proposed algorithm to infer TI-RADS scoring from clinical notes. Based on a given csv file with TI-RADS reports, our solution does:
 
     1) Segment all nodules in each report
