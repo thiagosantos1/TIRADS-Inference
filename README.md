@@ -9,12 +9,11 @@ Our pipilne representation is as illustraded bellow
 
 ## Results
 Continuous x Integral Solution :
-  <table border=1>
+  <table border=0>
      <tr align='center' > 
         <td><img src="https://github.com/thiagosantos1/TIRADS-Shared/blob/main/Img/pipeline.png" width="500"                  title="hover text"></td>         
      </tr>
   </table>
-
 </br>
 
 # Usage:
