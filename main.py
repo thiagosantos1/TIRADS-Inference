@@ -36,7 +36,7 @@ class TIRADS:
 
         self.num_classes = num_classes
         self.model_emb = model_emb
-        self.results_out = results_out
+        self.results_out = "data/" + results_out
 
         self.load_models()
 
