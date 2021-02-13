@@ -60,7 +60,7 @@ pip3 install -r requirements.txt
 
 cd 
 
-git clone https://github.com/thiagosantos1/TIRADS-Shared.git 
+git clone https://github.com/thiagosantos1/TIRADS-Inference.git
 
 
 ## Download Our Pre-trained model
