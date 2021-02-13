@@ -1,9 +1,11 @@
 # TIRADS-Shared repository.
-This repository contains the a workflow of our proposed alogithm to infer TI-RADS scoring from clinical notes. Based on a given csv file with TI-RADS reports, our solution does:
+This repository contains the workflow of our proposed algorithm to infer TI-RADS scoring from clinical notes. Based on a given csv file with TI-RADS reports, our solution does:
 
     1) Segment all nodules in each report
     2) Classify each nodule
     3) Save the results (Accurary, F1, and Confusion Matrix) to a file
+    
+Our pipilne representation is as illustraded bellow
 
 # Usage:
 
