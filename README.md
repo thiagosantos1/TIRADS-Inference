@@ -95,4 +95,6 @@ Phd. Thiago Santos
 
 Dr. Imon Banerjee
 
-Dr. 
+Dr. Judy Wawira
+
+Dr. Omar Kalls
