@@ -1,11 +1,16 @@
-# TIRADS-Shared repository.
+# TI-RADS Scoring Inference.
 This repository contains the workflow of our proposed algorithm to infer TI-RADS scoring from clinical notes. Based on a given csv file with TI-RADS reports, our solution does:
 
     1) Segment all nodules in each report
     2) Classify each nodule
     3) Save the results (Accurary, F1, and Confusion Matrix) to a file
 
-## Results
+## Publication
+
+* Ongoing
+	
+    
+## Pipeline
 Our pipilne representation is illustraded bellow:
   <table border=0>
      <tr align='center' > 
@@ -14,7 +19,7 @@ Our pipilne representation is illustraded bellow:
   </table>
 </br>
 
-# Usage:
+## Usage:
 
     main.py is the main class to execute TI-RADS score prediction - No usage of demografic information
     Usage:
@@ -36,10 +41,13 @@ A runing example of the GUI application:
      </tr>
   </table>
 </br>
-    
-    
 
+## Usage:
 
+    application.py is the executable file and it can be found inside of the folder GUI
+    Usage:
+    python3 application.py 
+    
 # Install Dependencies:
 
 apt-get update && apt-get install -y python3 \ python3-pip
@@ -81,3 +89,13 @@ cd TIRADS-Shared
 python3 main.py [usage]
 
 
+
+## Contributors
+
+
+
+Phd. Thiago Santos
+
+Dr. Imon Banerjee
+
+Dr. 
