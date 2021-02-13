@@ -25,6 +25,17 @@ Our pipilne representation is illustraded bellow:
                		[-output_file OUTPUT_FILE] - Choose an output file name; Default: results.txt
                		[-remove_structured True/False] - Choose to remove or not structured reports - If false, only nodules with free-text form of description will be used; Default: True
 
+
+# GUI Application
+At this time, we also have a simple GUI application that can be used for infering TI-RADS scoring from a nodule text. You can provide a single nodule text and the model will rank the labels based on the probabilities predicted by the model. This can be useful as you may want to know how confident the model is and also to know how the model ranked the nodule in each TI-RADS category.
+
+A runing example of the GUI application:
+  <table border=0>
+     <tr align='center' > 
+        <td><img src="https://github.com/thiagosantos1/TIRADS-Shared/blob/main/Img/gui_example.png" width="500"                  title="hover text"></td>         
+     </tr>
+  </table>
+</br>
     
     
 
