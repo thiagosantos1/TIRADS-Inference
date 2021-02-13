@@ -7,6 +7,16 @@ This repository contains the workflow of our proposed algorithm to infer TI-RADS
     
 Our pipilne representation is as illustraded bellow
 
+## Results
+Continuous x Integral Solution :
+  <table border=1>
+     <tr align='center' > 
+        <td><img src="https://github.com/thiagosantos1/TIRADS-Shared/blob/main/Img/pipeline.png" width="500"                  title="hover text"></td>         
+     </tr>
+  </table>
+
+</br>
+
 # Usage:
 
     main.py is the main class to execute TI-RADS score prediction - No usage of demografic information
