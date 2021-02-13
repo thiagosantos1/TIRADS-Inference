@@ -42,8 +42,7 @@ A runing example of the GUI application:
 
 ## Usage:
 
-    application.py is the executable file and it can be found inside of the folder GUI
-    Usage:
+    cd GUI/
     python3 application.py 
     
 ## Install Dependencies:
