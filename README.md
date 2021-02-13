@@ -4,11 +4,9 @@ This repository contains the workflow of our proposed algorithm to infer TI-RADS
     1) Segment all nodules in each report
     2) Classify each nodule
     3) Save the results (Accurary, F1, and Confusion Matrix) to a file
-    
-Our pipilne representation is as illustraded bellow
 
 ## Results
-Continuous x Integral Solution :
+Our pipilne representation is as illustraded bellow
   <table border=0>
      <tr align='center' > 
         <td><img src="https://github.com/thiagosantos1/TIRADS-Shared/blob/main/Img/pipeline.png" width="500"                  title="hover text"></td>         
