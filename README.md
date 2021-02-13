@@ -56,7 +56,7 @@ pip3 install --upgrade pip
 pip3 install -r requirements.txt
 
 
-## Install TIRADS-Shared
+## Install TIRADS-Inference
 
 cd 
 
