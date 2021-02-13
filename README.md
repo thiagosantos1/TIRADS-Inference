@@ -1,4 +1,4 @@
-# TI-RADS Scoring Inference.
+# TI-RADS Scoring Inference from semi-strucuted reports.
 This repository contains the workflow of our proposed algorithm to infer TI-RADS scoring from clinical notes. Based on a given csv file with TI-RADS reports, our solution does:
 
     1) Segment all nodules in each report
@@ -29,7 +29,7 @@ Our pipilne representation is illustraded bellow:
                		[-remove_structured True/False] - Choose to remove or not structured reports - If false, only nodules with free-text form of description will be used; Default: True
 
 
-# GUI Application
+## GUI Application
 At this time, we also have a simple GUI application that can be used for infering TI-RADS scoring from a nodule text. You can provide a single nodule text and the model will rank the labels based on the probabilities predicted by the model. This can be useful as you may want to know how confident the model is and also to know how the model ranked the nodule in each TI-RADS category.
 
 A runing example of the GUI application:
@@ -46,7 +46,7 @@ A runing example of the GUI application:
     Usage:
     python3 application.py 
     
-# Install Dependencies:
+## Install Dependencies:
 
 apt-get update && apt-get install -y python3 \ python3-pip
 
@@ -57,21 +57,21 @@ pip3 install --upgrade pip
 pip3 install -r requirements.txt
 
 
-# Install TIRADS-Shared
+## Install TIRADS-Shared
 
 cd 
 
 git clone https://github.com/thiagosantos1/TIRADS-Shared.git 
 
 
-# Download Our Pre-trained model
+## Download Our Pre-trained model
 
 Open the following link and download the model
 
 https://drive.google.com/file/d/1qhkilrbjO_heIUMvzCdRdEUcdXjRJVpQ/view?usp=sharing
 
 
-# Unzip and move all files to TIRADS-Shared/BERT/
+## Unzip and move all files to TIRADS-Shared/BERT/
 
 cd Downloads(Or folder where file were downloaded)
 
@@ -79,7 +79,7 @@ unzip BERT_model.zip -d BERT_model
 
 mv BERT_model/* TIRADS-Shared/BERT/
 
-# Use model to predict TI-RADS
+## Use model to predict TI-RADS
 cd
 
 cd TIRADS-Shared
