@@ -21,8 +21,6 @@ Our pipilne representation is illustraded bellow:
 
 ## Usage:
 
-    main.py is the main class to execute TI-RADS score prediction - No usage of demografic information
-    Usage:
     python3 main.py -inputfile myfile.csv -column_name report -output_file results.txt
     
     Usage: main.py 	[-inputfile INPUTFILE] - Choose the input CSV file; Default: indiana.csv
