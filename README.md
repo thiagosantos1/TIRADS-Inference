@@ -70,13 +70,13 @@ Open the following link and download the model
 https://drive.google.com/file/d/1qhkilrbjO_heIUMvzCdRdEUcdXjRJVpQ/view?usp=sharing
 
 
-## Unzip and move all files to TIRADS-Shared/BERT/
+## Unzip and move all files to TIRADS-Inference/BERT/
 
 cd Downloads(Or folder where file were downloaded)
 
 unzip BERT_model.zip -d BERT_model
 
-mv BERT_model/* TIRADS-Shared/BERT/
+mv BERT_model/* TIRADS-Inference/BERT/
 
 ## Use model to predict TI-RADS
 cd
