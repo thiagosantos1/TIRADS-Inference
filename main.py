@@ -197,7 +197,6 @@ if __name__ == '__main__':
     column = args.column_name
     output_file = args.output_file
     remove_structured = args.remove_structured.lower() in ("true", "yes", "1")
-    print(remove_structured)
 
     model = TIRADS(results_out=output_file)
 

@@ -42,7 +42,7 @@ def get_codes(txt):
 
 
 # extract nodule data, per section, as an individual data
-def extract_nodules(data, out = "TIRADS_nodules.xlsx", demographic=True,
+def extract_nodules(data, out = "data/TIRADS_nodules.xlsx", demographic=True,
                     search_findings = True, column_text='report'):
   pd.set_option('mode.chained_assignment', None)
 
