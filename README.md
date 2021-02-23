@@ -14,20 +14,20 @@ This repository contains the workflow of our proposed algorithm to infer TI-RADS
 Our pipilne representation is illustraded bellow:
   <table border=0>
      <tr align='center' > 
-        <td><img src="https://github.com/thiagosantos1/TIRADS-Shared/blob/main/Img/pipeline.png" width="500"                  title="hover text"></td>         
+        <td><img src="https://github.com/thiagosantos1/TIRADS-Shared/blob/main/Img/pipeline.png" width="500"                  title="pipeline"></td>         
      </tr>
   </table>
 </br>
 
 
-## GUI Application
+## Interface Design
 A friendly user interface was developed, using python and PyQt. The interface can handle a single nodule classification as well as prediction over all reports on a file. For a single nodule prediction, the user can input a nodule description and the application will predict the output with the highest probability. In this module, the application also gives the probability of all categories, giving a better indication and explanation to the user. The user can also load a file with multiple reports and perform a classification on all nodules at once. Once the file is loaded, our application automatic segment every report to extract all nodules.
 
 A runing example of the GUI application from a report and also from a single nodule:
 <table border=0>
      <tr align='center' > 
-        <td><img src="https://github.com/thiagosantos1/TIRADS-Inference/blob/main/Img/GUI_multiple.png" width="600"                  title="hover text"></td>         
-       <td><img src="https://github.com/thiagosantos1/TIRADS-Inference/blob/main/Img/GUI_single.png" width="400" title="hover        text"></td>
+        <td><img src="https://github.com/thiagosantos1/TIRADS-Inference/blob/main/Img/GUI_multiple.png" width="600"                  title="Application"></td>         
+       <td><img src="https://github.com/thiagosantos1/TIRADS-Inference/blob/main/Img/GUI_single.png" width="400" title="Application"></td>
      </tr>
   </table>
 </br>
