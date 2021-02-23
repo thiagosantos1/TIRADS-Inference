@@ -32,7 +32,7 @@ A runing example of the GUI application from a report and also from a single nod
   </table>
 </br>
 
-## GUI Usage:
+## Application Usage:
 
     cd GUI/
     python3 application.py 
