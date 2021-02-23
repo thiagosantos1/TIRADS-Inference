@@ -26,8 +26,8 @@ A friendly user interface was developed, using python and PyQt. The interface ca
 A runing example of the GUI application from a report and also from a single nodule:
 <table border=0>
      <tr align='center' > 
-        <td><img src="https://github.com/thiagosantos1/TIRADS-Inference/blob/main/Img/GUI_multiple.png" width="700"                  title="hover text"></td>         
-       <td><img src="https://github.com/thiagosantos1/TIRADS-Inference/blob/main/Img/GUI_single.png" width="300" title="hover        text"></td>
+        <td><img src="https://github.com/thiagosantos1/TIRADS-Inference/blob/main/Img/GUI_multiple.png" width="600"                  title="hover text"></td>         
+       <td><img src="https://github.com/thiagosantos1/TIRADS-Inference/blob/main/Img/GUI_single.png" width="400" title="hover        text"></td>
      </tr>
   </table>
 </br>
