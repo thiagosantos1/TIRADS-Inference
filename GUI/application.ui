@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>761</width>
-    <height>454</height>
+    <width>1295</width>
+    <height>561</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>761</width>
+      <width>1301</width>
       <height>51</height>
      </rect>
     </property>
@@ -29,10 +29,29 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QPushButton" name="ata">
+    <widget class="QPushButton" name="load_tr">
      <property name="geometry">
       <rect>
-       <x>210</x>
+       <x>490</x>
+       <y>10</y>
+       <width>131</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Load File</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="single_tr">
+     <property name="geometry">
+      <rect>
+       <x>770</x>
        <y>10</y>
        <width>113</width>
        <height>32</height>
@@ -45,57 +64,28 @@
       </font>
      </property>
      <property name="text">
-      <string>ATA</string>
+      <string>Single Nodule</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="tirads">
-     <property name="geometry">
-      <rect>
-       <x>430</x>
-       <y>10</y>
-       <width>113</width>
-       <height>32</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>TIRADS</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QTextEdit" name="nodule_desc">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>120</y>
-      <width>311</width>
-      <height>291</height>
-     </rect>
-    </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>90</y>
-      <width>141</width>
+      <x>1040</x>
+      <y>80</y>
+      <width>71</width>
       <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>15</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>Nodule Description</string>
+     <string>Results</string>
     </property>
    </widget>
    <widget class="QPushButton" name="predict">
@@ -104,8 +94,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>230</y>
+      <x>710</x>
+      <y>270</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -130,175 +120,66 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pred_tr_1">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
+   <widget class="QTableWidget" name="table_tr">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>120</y>
-      <width>161</width>
-      <height>32</height>
+      <x>0</x>
+      <y>110</y>
+      <width>691</width>
+      <height>421</height>
+     </rect>
+    </property>
+    <column>
+     <property name="text">
+      <string>Report</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Nodule</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Category</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Prediction</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>80</y>
+      <width>141</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>13</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>Benign</string>
-    </property>
-    <property name="checkable">
-     <bool>false</bool>
-    </property>
-    <property name="autoDefault">
-     <bool>false</bool>
-    </property>
-    <property name="flat">
-     <bool>false</bool>
+     <string>Nodules Extracted</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pred_tr_2">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
+   <widget class="QListView" name="results_tr">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>180</y>
-      <width>161</width>
-      <height>32</height>
+      <x>830</x>
+      <y>110</y>
+      <width>461</width>
+      <height>421</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>13</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Not Suspicious</string>
-    </property>
-    <property name="checkable">
-     <bool>false</bool>
-    </property>
-    <property name="autoDefault">
-     <bool>false</bool>
-    </property>
-    <property name="flat">
-     <bool>false</bool>
-    </property>
    </widget>
-   <widget class="QPushButton" name="pred_tr_3">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>580</x>
-      <y>240</y>
-      <width>161</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>13</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Mildly Suspicious</string>
-    </property>
-    <property name="checkable">
-     <bool>false</bool>
-    </property>
-    <property name="autoDefault">
-     <bool>false</bool>
-    </property>
-    <property name="flat">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pred_tr_4">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>580</x>
-      <y>300</y>
-      <width>161</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>13</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Moderately Suspicious</string>
-    </property>
-    <property name="checkable">
-     <bool>false</bool>
-    </property>
-    <property name="autoDefault">
-     <bool>false</bool>
-    </property>
-    <property name="flat">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pred_tr_5">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>580</x>
-      <y>360</y>
-      <width>161</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>13</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Highly Suspicious&quot;</string>
-    </property>
-    <property name="checkable">
-     <bool>false</bool>
-    </property>
-    <property name="autoDefault">
-     <bool>false</bool>
-    </property>
-    <property name="flat">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <zorder>frame</zorder>
-   <zorder>label</zorder>
-   <zorder>predict</zorder>
-   <zorder>pred_tr_1</zorder>
-   <zorder>pred_tr_2</zorder>
-   <zorder>pred_tr_3</zorder>
-   <zorder>pred_tr_4</zorder>
-   <zorder>pred_tr_5</zorder>
-   <zorder>nodule_desc</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

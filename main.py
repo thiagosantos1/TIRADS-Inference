@@ -27,8 +27,8 @@ import argparse
 import itertools
 
 
-class TIRADS:
-    def __init__(self, path_models="./", model_emb = 'bert', num_classes=5, results_out="results.txt"):
+class TIRADS_Model:
+    def __init__(self, path_models="./", model_emb = 'bert', num_classes=5, results_out="data/results.txt"):
 
         self.path_models = path_models
 
@@ -36,7 +36,7 @@ class TIRADS:
 
         self.num_classes = num_classes
         self.model_emb = model_emb
-        self.results_out = "data/" + results_out
+        self.results_out =  results_out
 
         self.load_models()
 
@@ -198,7 +198,7 @@ if __name__ == '__main__':
     output_file = args.output_file
     remove_structured = args.remove_structured.lower() in ("true", "yes", "1")
 
-    model = TIRADS(results_out=output_file)
+    model = TIRADS_Model(results_out=output_file)
 
     data = pd.read_csv(input_file)
     nodule_data = extract_nodules(data,demographic=False,search_findings=True, column_text=column)
