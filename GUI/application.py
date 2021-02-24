@@ -230,6 +230,12 @@ class Ui_TIRADS(object):
         column = 'report'
         output_file = "../data/results.txt"
 
+        if column not in data:
+            error = QtWidgets.QErrorMessage(self.my_obj)
+            error.setWindowTitle("Wrong column Input")
+            error.showMessage("Use a column name \'report\' for describing the nodules")
+            return
+
         self.tr_model = TIRADS_Model(results_out=output_file, path_models="../")
 
         
