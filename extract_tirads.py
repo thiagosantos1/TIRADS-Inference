@@ -119,7 +119,7 @@ def extract_nodules(data, out = "data/TIRADS_nodules.xlsx", demographic=True,
     new_data = pd.DataFrame(list(zip(report_id,original_text, X, y)), 
                  columns =['ID Report', 'Original Radiology Text', 'Nodule Text', 'TIRADS Score']) 
   
-  save_data(new_data, out=out)
+  #save_data(new_data, out=out)
   return new_data
  
 def struct_sentece(sentences):

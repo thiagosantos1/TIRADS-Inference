@@ -17,9 +17,9 @@ from extract_tirads import clean_section
 def extract_nodule_data(data, data_column="Nodule Text", score_column ='TIRADS Score', lemma=True,
                         scores_=True, clean_text=True, remove_reports=[], remove_struct_reports = False,
                         steam=True,remove_noise=False, min_size_X = 3, id_report = True, demographic = False,clean=True):
-  print("\tExtracting and cleaning data from nodule")
+  #print("\tExtracting and cleaning data from nodule")
   X, origX, y, id_txt = [], [], [], []
-  print("\n\tData original size: ", data.shape[0])
+  #print("\n\tData original size: ", data.shape[0])
   id_nodules = []
   race, gender, age, clinical = [], [], [], []
 
@@ -80,7 +80,7 @@ def extract_nodule_data(data, data_column="Nodule Text", score_column ='TIRADS S
             if scores_:
               y.append(int( data.iloc[i][score_column])) # only get the max score of the report
 
-  print("\n\tCleaned data size: ", len(X))
+  #print("\n\tCleaned data size: ", len(X))
   # id_nodules = set(id_nodules)
   # print(sorted(id_nodules))
   return X, y, id_txt, origX, race, gender, age, clinical

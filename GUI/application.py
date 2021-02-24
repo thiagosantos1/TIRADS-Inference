@@ -52,7 +52,7 @@ class Ui_TIRADS(object):
 
         self.predict = QtWidgets.QPushButton(self.centralwidget)
         self.predict.setEnabled(True)
-        self.predict.setGeometry(QtCore.QRect(705, 270, 113, 32))
+        self.predict.setGeometry(QtCore.QRect(705, 230, 113, 32))
         font = QtGui.QFont()
         font.setPointSize(13)
         font.setBold(False)
@@ -65,7 +65,7 @@ class Ui_TIRADS(object):
 
         self.save_res = QtWidgets.QPushButton(self.centralwidget)
         self.save_res.setEnabled(True)
-        self.save_res.setGeometry(QtCore.QRect(705, 400, 113, 32))
+        self.save_res.setGeometry(QtCore.QRect(705, 330, 113, 32))
         font = QtGui.QFont()
         font.setPointSize(13)
         font.setBold(False)
@@ -75,6 +75,20 @@ class Ui_TIRADS(object):
         self.save_res.setAutoDefault(False)
         self.save_res.setFlat(False)
         self.save_res.setObjectName("save_res")
+
+        self.save_nodules = QtWidgets.QPushButton(self.centralwidget)
+        self.save_nodules.setEnabled(True)
+        self.save_nodules.setGeometry(QtCore.QRect(705, 420, 113, 32))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        font.setBold(False)
+        font.setWeight(50)
+        self.save_nodules.setFont(font)
+        self.save_nodules.setCheckable(False)
+        self.save_nodules.setAutoDefault(False)
+        self.save_nodules.setFlat(False)
+        self.save_nodules.setObjectName("save_nodules")
+
 
         self.table_tr = QtWidgets.QTableWidget(self.centralwidget)
         self.table_tr.setGeometry(QtCore.QRect(0, 110, 691, 421))
@@ -121,7 +135,7 @@ class Ui_TIRADS(object):
 
         # progress bar
         self.progress = QtWidgets.QProgressBar(self.my_obj)
-        self.progress.setGeometry(700,290,125,50)
+        self.progress.setGeometry(700,260,125,50)
 
         # progess bar for loading data
         self.progress_data = QtWidgets.QProgressBar(self.my_obj)
@@ -141,6 +155,9 @@ class Ui_TIRADS(object):
 
         # save results
         self.save_res.clicked.connect(self.save_results)  
+
+        # save nodules
+        self.save_nodules.clicked.connect(self.save_rep_nod)  
 
         # load single nodule window
         self.single_tr.clicked.connect(self.load_single)
@@ -163,6 +180,7 @@ class Ui_TIRADS(object):
         item.setText(_translate("TIRADS", "Prediction"))
         self.label_2.setText(_translate("TIRADS", "Nodules Extracted"))
         self.save_res.setText(_translate("TIRADS", "Save Results"))
+        self.save_nodules.setText(_translate("TIRADS", "Save Nodules"))
 
 
     def data_progress(self, bar, start=0, end=85, reset=True):
@@ -215,13 +233,13 @@ class Ui_TIRADS(object):
         self.tr_model = TIRADS_Model(results_out=output_file, path_models="../")
 
         
-        nodule_data = extract_nodules(data,demographic=False,search_findings=True, column_text=column,
+        self.nodule_data = extract_nodules(data,demographic=False,search_findings=True, column_text=column,
                                         out = "../data/TIRADS_nodules.xlsx")
 
-        self.X, self.y, self.id_orig_txt,self.origX,_,_,_,_  = preprocess_data(data=nodule_data, steam=True, remove_noise=True, 
+        self.X, self.y, self.id_orig_txt,self.origX,_,_,_,_  = preprocess_data(data=self.nodule_data, steam=True, remove_noise=True, 
                                            lemma=True, id_report=True,data_column = "Nodule Text", 
                                            score_column= 'TIRADS Score',remove_reports=[],clean=False,
-                                           remove_struct_reports=False)
+                                           remove_struct_reports=True)
 
 
         # Fill the table with the report and segmentation
@@ -354,11 +372,33 @@ class Ui_TIRADS(object):
             error.showMessage("Please, make sure to make the predictions first")
             return
 
-        file_path = QtWidgets.QFileDialog.getSaveFileName(self.my_obj, 'Open TI-RADS File', '.')[0]
+        file_path = QtWidgets.QFileDialog.getSaveFileName(self.my_obj, 'Open TI-RADS Results File', '.')[0]
+
+        if len(file_path) <1:
+            return
+
+        file_path = file_path.split(".")[0] + ".txt"
 
         with open(file_path, 'w') as f:
             f.write(self.output_pred)
             f.write(self.output_1margin)
+
+
+    def save_rep_nod(self):
+        if len(self.y) <1:
+            error = QtWidgets.QErrorMessage(self.my_obj)
+            error.setWindowTitle("Load Data")
+            error.showMessage("Please load datafile")
+            return
+
+        file_path = QtWidgets.QFileDialog.getSaveFileName(self.my_obj, 'Open TI-RADS Nodule File', '.')[0]
+
+        if len(file_path) <1:
+            return
+
+        file_path = file_path.split(".")[0] + ".xlsx"
+        self.nodule_data.to_excel(file_path)
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
