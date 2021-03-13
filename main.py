@@ -25,7 +25,7 @@ from extract_data import preprocess_data
 from extract_tirads import extract_nodules
 import argparse
 import itertools
-
+import warnings
 
 class TIRADS_Model:
     def __init__(self, path_models="./", model_emb = 'bert', num_classes=5, results_out="data/results.txt"):
@@ -102,15 +102,15 @@ class TIRADS_Model:
 
         cm= confusion_matrix(test_data['labels'], predictions )
 
-        f1_macro = f1_score(test_data['labels'].to_numpy(), predictions, average='macro')
+        f1_macro = f1_score(test_data['labels'].to_numpy(), predictions, average='macro', labels=np.unique(predictions))
 
-        f1_micro = f1_score(test_data['labels'].to_numpy(), predictions, average='micro')
+        f1_micro = f1_score(test_data['labels'].to_numpy(), predictions, average='micro',labels=np.unique(predictions))
 
-        f1_wght = f1_score(test_data['labels'].to_numpy(), predictions, average='weighted')
+        f1_wght = f1_score(test_data['labels'].to_numpy(), predictions, average='weighted',labels=np.unique(predictions))
 
         acc = accuracy_score(test_data['labels'].to_numpy(), predictions)
 
-        cr = classification_report(test_data['labels'].values.tolist(), predictions, target_names=labels)
+        cr = classification_report(test_data['labels'].values.tolist(), predictions, target_names=labels,labels=np.unique(predictions))
 
         
         if save_results:
@@ -123,13 +123,11 @@ class TIRADS_Model:
                   'F1 Micro : {}\n' 
                   'F1 Weighted : {}\n' 
                   '\n\tConfusion Matrix\n{}\n'
-                  '\nTrue Label:\n {}\n'
-                  '\nPrediction :\n {}\n\n' 
                   '\t\tClassification Report per Score\n' 
                   '{}\n' 
                   '##################################################################################################\n\n'
                   )
-              output_string = s.format(acc,f1_macro,f1_micro, f1_wght, cm,test_data['labels'].to_numpy().tolist(),predictions.tolist(),cr)
+              output_string = s.format(acc,f1_macro,f1_micro, f1_wght, cm,cr)
             
 
               f.write(output_string)
@@ -141,15 +139,15 @@ class TIRADS_Model:
             y_true,y_pred = self.margin_pred(cm)
             cm= confusion_matrix(y_true, y_pred )
 
-            f1_macro = f1_score(y_true, y_pred, average='macro')
+            f1_macro = f1_score(y_true, y_pred, average='macro', labels=np.unique(y_pred))
 
-            f1_micro = f1_score(y_true, y_pred, average='micro')
+            f1_micro = f1_score(y_true, y_pred, average='micro', labels=np.unique(y_pred))
 
-            f1_wght = f1_score(y_true, y_pred, average='weighted')
+            f1_wght = f1_score(y_true, y_pred, average='weighted', labels=np.unique(y_pred))
 
             acc = accuracy_score(y_true, y_pred)
 
-            cr = classification_report(y_true, y_pred, target_names=labels)
+            cr = classification_report(y_true, y_pred, target_names=labels, labels=np.unique(y_pred))
 
             output_file = self.results_out 
             
@@ -186,6 +184,7 @@ def parse_args():
   return parser.parse_args()          
 
 if __name__ == '__main__':
+    warnings.filterwarnings('ignore')
     args = parse_args()
 
     # if len(sys.argv) < 4:
@@ -203,7 +202,7 @@ if __name__ == '__main__':
     data = pd.read_csv(input_file)
     nodule_data = extract_nodules(data,demographic=False,search_findings=True, column_text=column)
 
-    X, y, _,_,_,_,_  = preprocess_data(data=nodule_data, steam=True, remove_noise=True, 
+    X, y, _,_,_,_,_,_  = preprocess_data(data=nodule_data, steam=True, remove_noise=True, 
                                        lemma=True, id_report=False,data_column = "Nodule Text", 
                                        score_column= 'TIRADS Score',remove_reports=[],clean=False,
                                        remove_struct_reports=remove_structured)

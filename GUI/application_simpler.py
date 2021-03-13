@@ -1,9 +1,9 @@
 '''
-    Author: Thiago Santos - 02/22/2021
+    Author: Thiago Santos - 03/01/2021
 
     A BERT GUI application to predict TIRADS nodule category
 
-    pyuic5 -x -o application.py application.ui
+    pyuic5 -x -o application_simpler.py application_simpler.ui
 
 '''
 
@@ -14,48 +14,38 @@ import time
 sys.path.append('../') # add files from previous folder
 from main import *
 import single_nodule as sn
-import warnings
-
 
 class Ui_TIRADS(object):
     def setupUi(self, TIRADS):
-        warnings.filterwarnings('ignore')
         self.my_obj = TIRADS
         self.my_obj.setObjectName("TIRADS")
-        self.my_obj.setFixedSize(1295, 561)
+        self.my_obj.setFixedSize(693, 600)
         self.centralwidget = QtWidgets.QWidget(self.my_obj)
         self.centralwidget.setObjectName("centralwidget")
         self.frame = QtWidgets.QFrame(self.centralwidget)
-        self.frame.setGeometry(QtCore.QRect(0, 0, 1301, 51))
+        self.frame.setGeometry(QtCore.QRect(0, 0, 701, 51))
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.load_tr = QtWidgets.QPushButton(self.frame)
-        self.load_tr.setGeometry(QtCore.QRect(490, 10, 131, 32))
+        self.load_tr.setGeometry(QtCore.QRect(170, 10, 131, 32))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         self.load_tr.setFont(font)
         self.load_tr.setObjectName("load_tr")
         self.single_tr = QtWidgets.QPushButton(self.frame)
-        self.single_tr.setGeometry(QtCore.QRect(770, 10, 113, 32))
+        self.single_tr.setGeometry(QtCore.QRect(450, 10, 113, 32))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         self.single_tr.setFont(font)
         self.single_tr.setObjectName("single_tr")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(1040, 80, 71, 21))
-        font = QtGui.QFont()
-        font.setPointSize(15)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
+
 
         self.predict = QtWidgets.QPushButton(self.centralwidget)
         self.predict.setEnabled(True)
-        self.predict.setGeometry(QtCore.QRect(705, 230, 113, 32))
+        self.predict.setGeometry(QtCore.QRect(300, 540, 113, 32))
         font = QtGui.QFont()
         font.setPointSize(13)
         font.setBold(False)
@@ -68,7 +58,7 @@ class Ui_TIRADS(object):
 
         self.save_res = QtWidgets.QPushButton(self.centralwidget)
         self.save_res.setEnabled(True)
-        self.save_res.setGeometry(QtCore.QRect(705, 330, 113, 32))
+        self.save_res.setGeometry(QtCore.QRect(550, 540, 113, 32))
         font = QtGui.QFont()
         font.setPointSize(13)
         font.setBold(False)
@@ -81,7 +71,7 @@ class Ui_TIRADS(object):
 
         self.save_nodules = QtWidgets.QPushButton(self.centralwidget)
         self.save_nodules.setEnabled(True)
-        self.save_nodules.setGeometry(QtCore.QRect(705, 420, 113, 32))
+        self.save_nodules.setGeometry(QtCore.QRect(50, 540, 113, 32))
         font = QtGui.QFont()
         font.setPointSize(13)
         font.setBold(False)
@@ -96,7 +86,7 @@ class Ui_TIRADS(object):
         self.table_tr = QtWidgets.QTableWidget(self.centralwidget)
         self.table_tr.setGeometry(QtCore.QRect(0, 110, 691, 421))
         self.table_tr.setObjectName("table_tr")
-        self.table_tr.setColumnCount(4)
+        self.table_tr.setColumnCount(3)
         self.table_tr.setRowCount(0)
 
         item = QtWidgets.QTableWidgetItem()
@@ -105,14 +95,12 @@ class Ui_TIRADS(object):
         self.table_tr.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_tr.setHorizontalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_tr.setHorizontalHeaderItem(3, item)
-        self.table_tr.setColumnWidth(0,190)
-        self.table_tr.setColumnWidth(1,300)
-        self.table_tr.setColumnWidth(2,85)
+        self.table_tr.setColumnWidth(0,220)
+        self.table_tr.setColumnWidth(1,320)
+        self.table_tr.setColumnWidth(2,120)
 
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(230, 80, 141, 21))
+        self.label_2.setGeometry(QtCore.QRect(300, 80, 141, 21))
         font = QtGui.QFont()
         font.setPointSize(15)
         font.setBold(True)
@@ -138,7 +126,8 @@ class Ui_TIRADS(object):
 
         # progress bar
         self.progress = QtWidgets.QProgressBar(self.my_obj)
-        self.progress.setGeometry(700,260,125,50)
+        self.progress.setGeometry(420,550,125,10)
+        self.progress.setVisible(False)
 
         # progess bar for loading data
         self.progress_data = QtWidgets.QProgressBar(self.my_obj)
@@ -147,7 +136,7 @@ class Ui_TIRADS(object):
 
         # progess bar for loading single nodule window
         self.progress_window = QtWidgets.QProgressBar(self.my_obj)
-        self.progress_window.setGeometry(360,200,700,50)
+        self.progress_window.setGeometry(110,290,500,50)
         self.progress_window.setVisible(False)
 
         # if click tirads:
@@ -168,23 +157,22 @@ class Ui_TIRADS(object):
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.my_obj.setWindowTitle(_translate("TIRADS", "TIRADS Classifier"))
+        self.my_obj.setWindowTitle(_translate("TIRADS", "TI-RADS Classifier"))
         self.load_tr.setText(_translate("TIRADS", "Load File"))
         self.single_tr.setText(_translate("TIRADS", "Single Nodule"))
-        self.label.setText(_translate("TIRADS", "Results"))
+
         self.predict.setText(_translate("TIRADS", "Predict Score"))
         item = self.table_tr.horizontalHeaderItem(0)
-        item.setText(_translate("TIRADS", "Report"))
+        item.setText(_translate("TIRADS", "Radiology Text"))
         item = self.table_tr.horizontalHeaderItem(1)
-        item.setText(_translate("TIRADS", "Nodule"))
+        item.setText(_translate("TIRADS", "Nodule Description"))
         item = self.table_tr.horizontalHeaderItem(2)
-        item.setText(_translate("TIRADS", "Category"))
-        item = self.table_tr.horizontalHeaderItem(3)
-        item.setText(_translate("TIRADS", "Prediction"))
+        item.setText(_translate("TIRADS", "TIRADS Prediction"))
         self.label_2.setText(_translate("TIRADS", "Nodules Extracted"))
         self.save_res.setText(_translate("TIRADS", "Save Results"))
         self.save_nodules.setText(_translate("TIRADS", "Save Nodules"))
 
+       
 
     def data_progress(self, bar, start=0, end=85, reset=True):
         bar.setVisible(True)
@@ -260,7 +248,7 @@ class Ui_TIRADS(object):
             label = self.y[index]
             self.table_tr.setItem(index,0,QtWidgets.QTableWidgetItem(report))
             self.table_tr.setItem(index,1,QtWidgets.QTableWidgetItem(nodule))
-            self.table_tr.setItem(index,2,QtWidgets.QTableWidgetItem(str(label)))
+            #self.table_tr.setItem(index,2,QtWidgets.QTableWidgetItem(str(label)))
             #self.table_tr.resizeRowsToContents()
 
 
@@ -290,6 +278,7 @@ class Ui_TIRADS(object):
             error.showMessage("Please load datafile")
             return
 
+        self.progress.setVisible(True)
         self.data_progress(self.progress,end=80)
 
         self.predictions = self.tr_model.model.predict(self.test_data['report'])[0]
@@ -298,15 +287,15 @@ class Ui_TIRADS(object):
 
         cm= confusion_matrix(self.test_data['labels'], self.predictions )
 
-        f1_macro = f1_score(self.test_data['labels'].to_numpy(), self.predictions, average='macro', labels=np.unique(self.predictions))
+        f1_macro = f1_score(self.test_data['labels'].to_numpy(), self.predictions, average='macro')
 
-        f1_micro = f1_score(self.test_data['labels'].to_numpy(), self.predictions, average='micro', labels=np.unique(self.predictions))
+        f1_micro = f1_score(self.test_data['labels'].to_numpy(), self.predictions, average='micro')
 
-        f1_wght = f1_score(self.test_data['labels'].to_numpy(), self.predictions, average='weighted', labels=np.unique(self.predictions))
+        f1_wght = f1_score(self.test_data['labels'].to_numpy(), self.predictions, average='weighted')
 
         acc = accuracy_score(self.test_data['labels'].to_numpy(), self.predictions)
 
-        cr = classification_report(self.test_data['labels'].values.tolist(), self.predictions, target_names=labels, labels=np.unique(self.predictions))
+        cr = classification_report(self.test_data['labels'].values.tolist(), self.predictions, target_names=labels)
         
         output_file = self.tr_model.results_out 
         
@@ -317,26 +306,28 @@ class Ui_TIRADS(object):
             'F1 Micro : {}\n' 
             'F1 Weighted : {}\n' 
             '\n\tConfusion Matrix\n{}\n'
+            '\nTrue Label:\n {}\n'
+            '\nPrediction :\n {}\n\n' 
             '\t\tClassification Report per Score\n' 
             '{}\n' 
             '##################################################################################################\n\n'
             )
         true_label = self.test_data['labels'].to_numpy() +1
         pred = self.predictions +1
-        self.output_pred = s.format(acc,f1_macro,f1_micro, f1_wght, cm,cr)
+        self.output_pred = s.format(acc,f1_macro,f1_micro, f1_wght, cm,true_label.tolist(),pred.tolist(),cr)
 
         y_true,y_pred = self.tr_model.margin_pred(cm)
         cm= confusion_matrix(y_true, y_pred )
 
-        f1_macro = f1_score(y_true, y_pred, average='macro', labels=np.unique(y_pred))
+        f1_macro = f1_score(y_true, y_pred, average='macro')
 
-        f1_micro = f1_score(y_true, y_pred, average='micro', labels=np.unique(y_pred))
+        f1_micro = f1_score(y_true, y_pred, average='micro')
 
-        f1_wght = f1_score(y_true, y_pred, average='weighted', labels=np.unique(y_pred))
+        f1_wght = f1_score(y_true, y_pred, average='weighted')
 
         acc = accuracy_score(y_true, y_pred)
 
-        cr = classification_report(y_true, y_pred, target_names=labels, labels=np.unique(y_pred))
+        cr = classification_report(y_true, y_pred, target_names=labels)
 
         output_file = self.tr_model.results_out 
         
@@ -357,7 +348,7 @@ class Ui_TIRADS(object):
 
         # populate table with predictions
         for index, pred in enumerate(self.predictions):
-            self.table_tr.setItem(index,3,QtWidgets.QTableWidgetItem(str(pred+1)))
+            self.table_tr.setItem(index,2,QtWidgets.QTableWidgetItem(str(pred+1)))
 
         # populate view with results    
         QtWidgets.QListWidgetItem(self.output_pred, self.results_tr) 
@@ -366,6 +357,8 @@ class Ui_TIRADS(object):
 
         QtWidgets.QApplication.processEvents() 
         self.table_tr.viewport().update()
+
+        self.progress.setVisible(False)
 
     def save_results(self):
 
