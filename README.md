@@ -7,7 +7,7 @@ This repository contains the workflow of our proposed algorithm to infer TI-RADS
 
 ## Publication
 
-* Ongoing
+Submitted to AMIA(American Medical Informatics Association) 2021 ANNUAL SYMPOSIUM
 	
     
 ## Pipeline
@@ -18,6 +18,16 @@ Our pipilne representation is illustraded bellow:
      </tr>
   </table>
 </br>
+
+## Fusion-BERT Classification System
+Our proposed model arquitecture is illustraded bellow:
+  <table border=0>
+     <tr align='center' > 
+        <td><img src="https://github.com/thiagosantos1/TIRADS-Shared/blob/main/Img/fusion_model.png" width="500"                  title="fusion model"></td>         
+     </tr>
+  </table>
+</br>
+The output probabilities of the three independent models and concate-nated and fed into a logistic regression meta-learner.
 
 
 ## Interface Design
