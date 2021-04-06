@@ -26,8 +26,9 @@ Our proposed model arquitecture is illustraded bellow:
         <td><img src="https://github.com/thiagosantos1/TIRADS-Shared/blob/main/Img/fusion_model.png" width="500"                  title="fusion model"></td>         
      </tr>
   </table>
+ The output probabilities of the three independent models and concate-nated and fed into a logistic regression meta-learner.
 </br>
-The output probabilities of the three independent models and concate-nated and fed into a logistic regression meta-learner.
+
 
 
 ## Interface Design
