@@ -7,7 +7,7 @@ This repository contains the workflow of our proposed algorithm to infer TI-RADS
 
 ## Publication
 
-Submitted to AMIA(American Medical Informatics Association) 2021 ANNUAL SYMPOSIUM
+Accepted to AMIA(American Medical Informatics Association) 2021 ANNUAL SYMPOSIUM
 	
     
 ## Pipeline
